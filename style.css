@@ -4,7 +4,7 @@ body {
   }
 
   :root{
-      --primary-box-color:#1f4a79;
+      --primary-box-color:#1F4A79;
   }
 
 .container{
@@ -42,19 +42,19 @@ body {
 }
 
 .container .box-40{
-    background: #4c6e94
+    background: #4C6E94
 }
 
 .container .box-30{
-    background: #6d89a8;
+    background: #6D89A8;
 }
 
 .container .box-20{
-    background: #b1c0d0;
+    background: #B1C0D0;
 }
 
 .container .box-10{
-    background: #dde4eb;
+    background: #DDE4EB;
 }
 
 /* driver */
@@ -71,7 +71,7 @@ body {
 }
 
 .container .box-80{
-    background: #11181f;
+    background: #11181F;
 }
 
 
