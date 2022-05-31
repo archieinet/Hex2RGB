@@ -83,7 +83,7 @@ function mixer(overlay, background, opacity) {
     let r = Math.round(opacity * overlay + (1 - opacity) * background[0]);
     let g = Math.round(opacity * overlay + (1 - opacity) * background[1]);
     let b = Math.round(opacity * overlay + (1 - opacity) * background[2]);
-    console.info(`r:${r},g:${g},b:${b} = ${RGBToHex(r, g, b)}`);
+    // console.info(`r:${r},g:${g},b:${b} = ${RGBToHex(r, g, b)}`);
     return RGBToHex(r, g, b);
 }
 function blend(overlay, background, opacity) {
