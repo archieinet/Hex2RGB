@@ -49,7 +49,6 @@ function convertHexToRGB(input) {
     let switch_cnt = 1;
     let total = 0;
     let index = 0;
-    const color = ['Red', 'Green', 'Blue'];
     let rgb = [];
 
     [...input].forEach((c) => {
@@ -60,7 +59,7 @@ function convertHexToRGB(input) {
                 break;
             case 2:
                 total += v;
-                rgb[index++] = total; //console.info(`${color[index++]}: ${total}`);
+                rgb[index++] = total;
                 switch_cnt = 1;
                 break;
             default:
