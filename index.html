@@ -1,113 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RGB to Hex color conversion [1f4a79]</title>
-  </head>
-  <link rel="stylesheet" href="/style.css" />
-  <body>
-    <h1>RGB to Hex color conversion [1F4A79]</h1>
-    <div class="container">
-      <input type="color" id="colorMe" />
-      <a href="https://www.rapidtables.com/convert/color/rgb-to-hex.html">
-        RGB & Hex
-      </a>
-      <ul>
-        <li class="box-40"><div class="title">40<br /><p>80% passthrough over white<br />#4C6E94</p></div></li>
-        <li class="box-30"><div class="title">30<br /><p>65% passthrough over white<br />#6D89A8</p></div></li>
-        <li class="box-20"><div class="title">20<br /><p>35% passthrough over white<br />#B1C0D0</p></div></li>
-        <li class="box-10"><div class="title">10<br /><p>15% passthrough over white<br />#DDE4EB</p></div></li>
 
-        <li class="box-50"><div class="title">50<br /><p>Primary color<br />#1F4A79</p></div></li>
-        <li class="box-60"><div class="title">60<br /><p>60% passthrough over black<br />#193554</p></div></li>
-        <li class="box-70"><div class="title">70<br /><p>70% passthrough over black<br />#152434</p></div></li>
-        <li class="box-80"><div class="title">80<br /><p>80% passthrough over black<br />#11181F</p></div></li>
-      </ul>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RGB to Hex color conversion [1f4a79]</title>
+</head>
+<link rel="stylesheet" href="/style.css" />
 
-    <script>
-      let input = '#1F4A79';
-      const hex = { A: 10, B: 11, C: 12, D: 13, E: 14, F: 15 };
-      /* display hex elements */
-      //   Object.keys(hex).forEach((k) => {
-      //     console.info(`Key: ${k}: Value ${hex[k]}`);
-      //   });
-      updateBoxes(input);
-      convertHexToRGB('#1f4a79'.substring(1).toUpperCase()); //debug - remove
-      convertHexToRGB('#193554'.substring(1).toUpperCase()); //debug - remove
-      
-      /* attach events */
-      document.getElementById('colorMe').addEventListener('input', (e) => {
-        input = document
-          .getElementById('colorMe')
-          .value.substring(1)
-          .toUpperCase();
-        let rgb = convertHexToRGB(input);
-        let hex = RGBToHex(rgb[0], rgb[1], rgb[2]);
-        updateBoxes(hex); //console.info(hex);
+<body>
+  <h1>RGB to Hex color conversion [1F4A79]</h1>
+  <div class="container">
+    <input type="color" id="colorMe" />
+    <a href="https://www.rapidtables.com/convert/color/rgb-to-hex.html" target="_blank">
+      RGB & Hex
+    </a>
+    <ul>
+      <li class="box-40">
+        <div class="title">80% passthrough over white - 40<p>#4C6E94</p>
+        </div>
+      </li>
+      <li class="box-30">
+        <div class="title">60% passthrough over white - 30<p>#6D89A8</p>
+        </div>
+      </li>
+      <li class="box-20">
+        <div class="title">35% passthrough over white - 20<p>#B1C0D0</p>
+        </div>
+      </li>
+      <li class="box-10">
+        <div class="title">15% passthrough over white - 10<p>#DDE4EB</p>
+        </div>
+      </li>
+
+      <li class="box-50">
+        <div class="title">Primary color<br />
+          <p>#1F4A79</p>
+        </div>
+      </li>
+      <li class="box-60">
+        <div class="title">60% passthrough over black - 60<br />
+          <p>#193554</p>
+        </div>
+      </li>
+      <li class="box-70">
+        <div class="title">70% passthrough over black - 70<br />
+          <p>#152434</p>
+        </div>
+      </li>
+      <li class="box-80">
+        <div class="title">85% passthrough over black - 85<br />
+          <p>#11181F</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    let _input = '#1F4A79';
+    const _hex = { A: 10, B: 11, C: 12, D: 13, E: 14, F: 15 };
+
+    const _backgroundOn = {
+      Black: 15, //#0f0f0f
+      White: 255 //#0f0f0f
+    };
+
+    const _opacity_15 = 0.15;
+    const _opacity_35 = 0.35;
+    const _opacity_65 = 0.65;
+    const _opacity_20 = 0.20;
+    const _opacity_80 = 0.80;
+    const _opacity_85 = 0.85;
+
+    /*----------------------test-------------------------- */
+    let rgb = [31,74,121]; // #1F4A79 - 31, 74,121
+      passthroughOver('.box-40', '--color-name-40', mixer(_backgroundOn.White, rgb, _opacity_20));
+      passthroughOver('.box-30', '--color-name-30', mixer(_backgroundOn.White, rgb, _opacity_35));
+      passthroughOver('.box-20', '--color-name-20', mixer(_backgroundOn.White, rgb, _opacity_65));
+      passthroughOver('.box-10', '--color-name-10', mixer(_backgroundOn.White, rgb, _opacity_85));
+      passthroughOver('.box-50', '--color-name-50', mixer(_backgroundOn.Black, rgb, 0));
+      passthroughOver('.box-60', '--color-name-60', mixer(_backgroundOn.Black, rgb, _opacity_35));
+      passthroughOver('.box-70', '--color-name-70', mixer(_backgroundOn.Black, rgb, _opacity_65));
+      passthroughOver('.box-80', '--color-name-80', mixer(_backgroundOn.Black, rgb, _opacity_85));
+
+    /* attach events */
+    document.getElementById('colorMe').addEventListener('input', (e) => {
+      _input = document
+        .getElementById('colorMe')
+        .value.substring(1)
+        .toUpperCase();
+      let rgb = convertHexToRGB(_input);
+      let hex = RGBToHex(rgb[0], rgb[1], rgb[2]);
+      //----------------- display colors
+      passthroughOver('.box-40', '--color-name-40', mixer(_backgroundOn.White, rgb, _opacity_20));
+      passthroughOver('.box-30', '--color-name-30', mixer(_backgroundOn.White, rgb, _opacity_35));
+      passthroughOver('.box-20', '--color-name-20', mixer(_backgroundOn.White, rgb, _opacity_65));
+      passthroughOver('.box-10', '--color-name-10', mixer(_backgroundOn.White, rgb, _opacity_85));
+      passthroughOver('.box-50', '--color-name-50', mixer(_backgroundOn.Black, rgb, 0));
+      passthroughOver('.box-60', '--color-name-60', mixer(_backgroundOn.Black, rgb, _opacity_35));
+      passthroughOver('.box-70', '--color-name-70', mixer(_backgroundOn.Black, rgb, _opacity_65));
+      passthroughOver('.box-80', '--color-name-80', mixer(_backgroundOn.Black, rgb, _opacity_85));
+      //-----------------
+    });
+
+    function convertHexToRGB(input) {
+      let switch_cnt = 1;
+      let total = 0;
+      let index = 0;
+      const color = ['Red', 'Green', 'Blue'];
+      let rgb = [];
+
+      [...input].forEach((c) => {
+        let v = +(isNaN(c) ? _hex[c] : c);
+        switch (switch_cnt++) {
+          case 1:
+            total = v * 16;
+            break;
+          case 2:
+            total += v;
+            rgb[index++] = total; //console.info(`${color[index++]}: ${total}`);
+            switch_cnt = 1;
+            break;
+          default:
+            total = 0;
+        }
       });
+      return rgb;
+    }
 
-      function convertHexToRGB(input) {
-        let switch_cnt = 1;
-        let total = 0;
-        let index = 0;
-        const color = ['Red', 'Green', 'Blue'];
-        let rgb = [];
+    function convertToHex(v) {
+      let hex = v.toString(16).toUpperCase();
+      return hex.length === 1 ? `0${hex}` : hex;
+    }
 
-        [...input].forEach((c) => {
-          let v = +(isNaN(c) ? hex[c] : c);
-          switch (switch_cnt++) {
-            case 1:
-              total = v * 16;
-              break;
-            case 2:
-              total += v;
-              rgb[index++] = total; //console.info(`${color[index++]}: ${total}`);
-              switch_cnt = 1;
-              break;
-            default:
-              total = 0;
-          }
-        });
-        console.info(rgb);
-        return rgb;
-      }
+    function RGBToHex(r, g, b) {
+      return `#${convertToHex(r)}${convertToHex(g)}${convertToHex(b)}`;
+    }
 
-      function convertToHex(v) {
-        let hex = v.toString(16);
-        return hex.length === 1 ? `0${hex}` : hex;
-      }
+    function mixer(overlay, background, opacity) {
+      let r = Math.round(opacity * overlay + (1 - opacity) * background[0]);
+      let g = Math.round(opacity * overlay + (1 - opacity) * background[1]);
+      let b = Math.round(opacity * overlay + (1 - opacity) * background[2]);
+      console.info(`r:${r},g:${g},b:${b} = ${RGBToHex(r, g, b)}`);
+      return RGBToHex(r, g, b);
+    }
+    function blend(overlay, background, opacity) {
+      return Math.round(opacity * overlay + (1 - opacity) * background);
+    }
+    
+    function passthroughOver(box, background, color) { 
+      const boxSelector = document.querySelector(box);
+      boxSelector.style.setProperty(background, color);
+    }
 
-      function RGBToHex(r, g, b) {
-        return `#${convertToHex(r)}${convertToHex(g)}${convertToHex(b)}`;
-      }
+  </script>
+</body>
 
-      function updateBoxes(color) {
-        const box = document.querySelector('.box-50');
-        box.style.setProperty('--primary-box-color', color);
-      }
-
-      function rgbToHsl(r, g, b){
-          r /= 255, g /= 255, b /= 255;
-          var max = Math.max(r, g, b), min = Math.min(r, g, b);
-          var h, s, l = (max + min) / 2;
-
-          if(max == min){
-              h = s = 0; // achromatic
-          }else{
-              var d = max - min;
-              s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-              switch(max){
-                  case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                  case g: h = (b - r) / d + 2; break;
-                  case b: h = (r - g) / d + 4; break;
-              }
-              h /= 6;
-          }
-          return [h, s, l];
-      }
-    </script>
-  </body>
 </html>

@@ -1,25 +1,34 @@
 body {
     display: flexbox;
     background-color: #baa7a7;
-  }
+}
 
-  :root{
-      --primary-box-color:#1F4A79;
-  }
+:root {
+    --background-on-black: #0f0f0f;
+    --background-on-white: #fff;
+    --color-name-50: #baa7a7;
+    --color-name-40: #baa7a7;
+    --color-name-30: #baa7a7;
+    --color-name-20: #baa7a7;
+    --color-name-10: #baa7a7;
+    --color-name-60: #baa7a7;
+    --color-name-70: #baa7a7;
+    --color-name-80: #baa7a7;
+}
 
-.container{
+.container {
     width: 95%;
     overflow: hidden;
     margin: 20px auto;
-    padding:20px 0;
+    padding: 20px 0;
 }
 
-.container ul{
+.container ul {
     padding: 0;
     margin: 0;
 }
 
-.container ul li{
+.container ul li {
     list-style: none;
     float: left;
     width: 20%;
@@ -28,58 +37,59 @@ body {
     margin: 40px 20px 0 40px;
 }
 
-.container ul li:hover{
+.container ul li:hover {
     opacity: 0.9;
 }
 
-.container ul li .title{
+.container ul li .title {
     width: 100%;
     height: 50px;
     line-height: 50px;
-    background: #0f0f0f; 
+    background: #0f0f0f;
     text-align: center;
-    color: #fff;
+    color:#fff;
 }
 
-.container .box-40{
-    background: #4C6E94
+.container .box-40 {
+    background: var(--color-name-40);
 }
 
-.container .box-30{
-    background: #6D89A8;
+.container .box-30 {
+    background: var(--color-name-30);
 }
 
-.container .box-20{
-    background: #B1C0D0;
+.container .box-20 {
+    background: var(--color-name-20);
 }
 
-.container .box-10{
-    background: #DDE4EB;
+.container .box-10 {
+    background: var(--color-name-10);
+    color: black !important;
 }
 
 /* driver */
-.container .box-50{
-    background:var(--primary-box-color); 
+.container .box-50 {
+    background: var(--color-name-50);
 }
 
-.container .box-60{
-    background: #193554;
+.container .box-60 {
+    background: var(--color-name-60);
 }
 
-.container .box-70{
-    background: #152434;
+.container .box-70 {
+    background: var(--color-name-70);
 }
 
-.container .box-80{
-    background: #11181F;
+.container .box-80 {
+    background: var(--color-name-80);
 }
 
 
 
 
 
-@media screen and (max-width:1200px){
-    .container ul li{
+@media screen and (max-width:1200px) {
+    .container ul li {
         width: 40%;
         margin: 20px;
     }
