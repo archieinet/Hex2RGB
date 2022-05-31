@@ -30,10 +30,9 @@ document.getElementById('colorMe').addEventListener('input', (e) => {
         .getElementById('colorMe')
         .value.substring(1)
         .toUpperCase();
-    let rgb = convertHexToRGB(_input);
-    let hex = RGBToHex(rgb[0], rgb[1], rgb[2]);
-    //----------------- display colors
+    let rgb = convertHexToRGB(_input); 
 
+    //----------------- display colors
     passthroughOver('.box-40', '--color-name-40', mixer(_backgroundOn.White, rgb, _opacity_20));
     passthroughOver('.box-30', '--color-name-30', mixer(_backgroundOn.White, rgb, _opacity_35));
     passthroughOver('.box-20', '--color-name-20', mixer(_backgroundOn.White, rgb, _opacity_65));
@@ -42,7 +41,6 @@ document.getElementById('colorMe').addEventListener('input', (e) => {
     passthroughOver('.box-60', '--color-name-60', mixer(_backgroundOn.Black, rgb, _opacity_35));
     passthroughOver('.box-70', '--color-name-70', mixer(_backgroundOn.Black, rgb, _opacity_65));
     passthroughOver('.box-80', '--color-name-80', mixer(_backgroundOn.Black, rgb, _opacity_85));
-    //-----------------
 });
 
 function convertHexToRGB(input) {
