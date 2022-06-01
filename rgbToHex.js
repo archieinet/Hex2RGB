@@ -26,10 +26,7 @@ passthroughOver('.box-80', '--color-name-80', mixer(_backgroundOn.Black, rgb, _o
 
 /* attach events */
 document.getElementById('colorMe').addEventListener('input', (e) => {
-    _input = document
-        .getElementById('colorMe')
-        .value.substring(1)
-        .toUpperCase();
+    _input = document.getElementById('colorMe').value;
     let rgb = convertHexToRGB(_input); 
 
     //----------------- display colors
@@ -49,7 +46,7 @@ function convertHexToRGB(input) {
     let index = 0;
     let rgb = [];
 
-    [...input].forEach((c) => {
+    [...input.substring(1).toUpperCase()].forEach((c) => {
         let v = +(isNaN(c) ? _hex[c] : c);
         switch (switch_cnt++) {
             case 1:
