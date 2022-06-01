@@ -13,7 +13,17 @@
 
 body {
     display: flexbox;
-    background-color: #baa7a7;
+    background-color: #f9f9f9;
+    color: #fff;
+}
+
+h1 {
+    color: var(--background-on-black);
+    margin-left: 50px;
+}
+
+a {    
+    text-decoration: none;    
 }
 
 .center {
@@ -56,6 +66,10 @@ body {
     color:#fff;
 }
 
+.container ul li p{
+    text-align: center;
+}
+
 .container .box-40 {
     background: var(--color-name-40);
 }
@@ -66,14 +80,14 @@ body {
 
 .container .box-20 {
     background: var(--color-name-20);
+    color: #0f0f0f;
 }
 
 .container .box-10 {
     background: var(--color-name-10);
-    color: black !important;
+    color: #0f0f0f;
 }
 
-/* driver */
 .container .box-50 {
     background: var(--color-name-50);
 }
