@@ -74,13 +74,11 @@ function RGBToHex(r, g, b) {
 }
 
 function mixer(overlay, background, opacity) {
-    let r = Math.round(opacity * overlay + (1 - opacity) * background[0]);
-    let g = Math.round(opacity * overlay + (1 - opacity) * background[1]);
-    let b = Math.round(opacity * overlay + (1 - opacity) * background[2]);
-    return RGBToHex(r, g, b);
-}
-function blend(overlay, background, opacity) {
-    return Math.round(opacity * overlay + (1 - opacity) * background);
+    let rgb = [];
+    background.forEach((bg) => {
+        rgb.push(Math.round(opacity * overlay + (1 - opacity) * bg));
+    });
+    return RGBToHex(...rgb);
 }
 
 function passthroughOver(box, background, color) {
